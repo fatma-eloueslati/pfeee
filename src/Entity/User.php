@@ -2,14 +2,15 @@
 
 namespace App\Entity;
 
-use App\Repository\AdminRepository;
+use App\Repository\UserRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
- * @ORM\Entity(repositoryClass=AdminRepository::class)
+ * @ORM\Entity(repositoryClass=UserRepository::class)
+ * @ORM\Table(name="`user`")
  */
-class Admin implements UserInterface
+class User implements UserInterface
 {
     /**
      * @ORM\Id
@@ -21,7 +22,7 @@ class Admin implements UserInterface
     /**
      * @ORM\Column(type="string", length=180, unique=true)
      */
-    private $adiministrateur;
+    private $email;
 
     /**
      * @ORM\Column(type="json")
@@ -39,14 +40,14 @@ class Admin implements UserInterface
         return $this->id;
     }
 
-    public function getAdiministrateur(): ?string
+    public function getEmail(): ?string
     {
-        return $this->adiministrateur;
+        return $this->email;
     }
 
-    public function setAdiministrateur(string $adiministrateur): self
+    public function setEmail(string $email): self
     {
-        $this->adiministrateur = $adiministrateur;
+        $this->email = $email;
 
         return $this;
     }
@@ -58,7 +59,7 @@ class Admin implements UserInterface
      */
     public function getUsername(): string
     {
-        return (string) $this->adiministrateur;
+        return (string) $this->email;
     }
 
     /**
@@ -68,7 +69,7 @@ class Admin implements UserInterface
     {
         $roles = $this->roles;
         // guarantee every user at least has ROLE_USER
-        $roles[] = 'ROLE_ADMIN';
+        $roles[] = 'ROLE_USER';
 
         return array_unique($roles);
     }
