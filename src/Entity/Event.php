@@ -42,6 +42,18 @@ class Event
      */
     private $Localisation;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Category::class, inversedBy="Event")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $category;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="event")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $user;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -103,6 +115,30 @@ class Event
     public function setLocalisation(string $Localisation): self
     {
         $this->Localisation = $Localisation;
+
+        return $this;
+    }
+
+    public function getCategory(): ?Category
+    {
+        return $this->category;
+    }
+
+    public function setCategory(?Category $category): self
+    {
+        $this->category = $category;
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): self
+    {
+        $this->user = $user;
 
         return $this;
     }
