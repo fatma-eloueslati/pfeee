@@ -28,9 +28,20 @@ class Event
     private $Titre;
 
     /**
+     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="events")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $user;
+
+    /**
      * @ORM\Column(type="text")
      */
     private $Description;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $urlphoto;
 
     /**
      * @ORM\Column(type="date")
@@ -70,6 +81,17 @@ class Event
 
         return $this;
     }
+    public function getUser(): ?user
+    {
+        return $this->user;
+    }
+
+    public function setUser(?user $user): self
+    {
+        $this->user = $user;
+
+        return $this;
+    }
 
     public function getDescription(): ?string
     {
@@ -79,6 +101,16 @@ class Event
     public function setDescription(string $Description): self
     {
         $this->Description = $Description;
+
+        return $this;
+    }
+    public function getUrlphoto(): ?string
+    {
+        return $this->urlphoto;
+    }
+    public function setUrlphoto(string $urlphoto): self
+    {
+        $this->urlphoto = $urlphoto;
 
         return $this;
     }
