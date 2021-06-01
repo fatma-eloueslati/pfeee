@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 
@@ -34,6 +36,28 @@ class User implements UserInterface
      * @ORM\Column(type="string")
      */
     private $password;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Event::class, mappedBy="user")
+     */
+    private $event;
+
+    /**
+     * @ORM\OneToMany(targetEntity=DonPhy::class, mappedBy="user")
+     */
+    private $donphy;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Cagnotte::class, mappedBy="user")
+     */
+    private $cagnotte;
+
+    public function __construct()
+    {
+        $this->event = new ArrayCollection();
+        $this->donphy = new ArrayCollection();
+        $this->cagnotte = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -114,5 +138,95 @@ class User implements UserInterface
     {
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
+    }
+
+    /**
+     * @return Collection|Event[]
+     */
+    public function getEvent(): Collection
+    {
+        return $this->event;
+    }
+
+    public function addEvent(Event $event): self
+    {
+        if (!$this->event->contains($event)) {
+            $this->event[] = $event;
+            $event->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeEvent(Event $event): self
+    {
+        if ($this->event->removeElement($event)) {
+            // set the owning side to null (unless already changed)
+            if ($event->getUser() === $this) {
+                $event->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|DonPhy[]
+     */
+    public function getDonphy(): Collection
+    {
+        return $this->donphy;
+    }
+
+    public function addDonphy(DonPhy $donphy): self
+    {
+        if (!$this->donphy->contains($donphy)) {
+            $this->donphy[] = $donphy;
+            $donphy->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeDonphy(DonPhy $donphy): self
+    {
+        if ($this->donphy->removeElement($donphy)) {
+            // set the owning side to null (unless already changed)
+            if ($donphy->getUser() === $this) {
+                $donphy->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Cagnotte[]
+     */
+    public function getCagnotte(): Collection
+    {
+        return $this->cagnotte;
+    }
+
+    public function addCagnotte(Cagnotte $cagnotte): self
+    {
+        if (!$this->cagnotte->contains($cagnotte)) {
+            $this->cagnotte[] = $cagnotte;
+            $cagnotte->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCagnotte(Cagnotte $cagnotte): self
+    {
+        if ($this->cagnotte->removeElement($cagnotte)) {
+            // set the owning side to null (unless already changed)
+            if ($cagnotte->getUser() === $this) {
+                $cagnotte->setUser(null);
+            }
+        }
+
+        return $this;
     }
 }

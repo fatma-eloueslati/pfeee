@@ -42,6 +42,18 @@ class DonPhy
      */
     private $Num_tel;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Category::class, inversedBy="donphy")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $category;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="donphy")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $user;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -103,6 +115,30 @@ class DonPhy
     public function setNumTel(int $Num_tel): self
     {
         $this->Num_tel = $Num_tel;
+
+        return $this;
+    }
+
+    public function getCategory(): ?Category
+    {
+        return $this->category;
+    }
+
+    public function setCategory(?Category $category): self
+    {
+        $this->category = $category;
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): self
+    {
+        $this->user = $user;
 
         return $this;
     }
