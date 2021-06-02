@@ -146,6 +146,7 @@ class Event
 
         return $this;
     }
+<<<<<<< HEAD
 
     public function getUser(): ?User
     {
@@ -158,4 +159,6 @@ class Event
 
         return $this;
     }
+=======
+>>>>>>> 7eb143b6bcdecae3840eabb8b204d9becb3fdc98
 }
