@@ -54,10 +54,10 @@ class Event
     private $category;
 
     /**
-     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="event")
+     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="events")
      * @ORM\JoinColumn(nullable=false)
      */
-    private $user;
+    private $User;
 
     public function getId(): ?int
     {
@@ -87,17 +87,7 @@ class Event
 
         return $this;
     }
-    public function getUser(): ?user
-    {
-        return $this->user;
-    }
 
-    public function setUser(?user $user): self
-    {
-        $this->user = $user;
-
-        return $this;
-    }
 
     public function getDescription(): ?string
     {
@@ -153,6 +143,18 @@ class Event
     public function setCategory(?Category $category): self
     {
         $this->category = $category;
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->User;
+    }
+
+    public function setUser(?User $User): self
+    {
+        $this->User = $User;
 
         return $this;
     }

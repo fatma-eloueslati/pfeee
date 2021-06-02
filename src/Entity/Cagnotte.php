@@ -26,6 +26,10 @@ class Cagnotte
      * @ORM\Column(type="string", length=255)
      */
     private $Titre;
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $urlphoto;
 
     /**
      * @ORM\Column(type="text")
@@ -84,6 +88,16 @@ class Cagnotte
     public function setTitre(string $Titre): self
     {
         $this->Titre = $Titre;
+
+        return $this;
+    }
+    public function getUrlphoto(): ?string
+    {
+        return $this->urlphoto;
+    }
+    public function setUrlphoto(string $urlphoto): self
+    {
+        $this->urlphoto = $urlphoto;
 
         return $this;
     }

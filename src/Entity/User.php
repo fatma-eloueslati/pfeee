@@ -38,11 +38,6 @@ class User implements UserInterface
     private $password;
 
     /**
-     * @ORM\OneToMany(targetEntity=Event::class, mappedBy="user")
-     */
-    private $event;
-
-    /**
      * @ORM\OneToMany(targetEntity=DonPhy::class, mappedBy="user")
      */
     private $donphy;
@@ -53,15 +48,22 @@ class User implements UserInterface
     private $cagnotte;
 
     /**
+<<<<<<< HEAD
      * @ORM\Column(type="string", length=255, unique=true)
      */
     private $username;
+=======
+     * @ORM\OneToMany(targetEntity=Event::class, mappedBy="User")
+     */
+    private $events;
+>>>>>>> 3b9bb84fce0fcd44064ef43f7bc48eafeb4946d5
 
     public function __construct()
     {
         $this->event = new ArrayCollection();
         $this->donphy = new ArrayCollection();
         $this->cagnotte = new ArrayCollection();
+        $this->events = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -146,36 +148,6 @@ class User implements UserInterface
     }
 
     /**
-     * @return Collection|Event[]
-     */
-    public function getEvent(): Collection
-    {
-        return $this->event;
-    }
-
-    public function addEvent(Event $event): self
-    {
-        if (!$this->event->contains($event)) {
-            $this->event[] = $event;
-            $event->setUser($this);
-        }
-
-        return $this;
-    }
-
-    public function removeEvent(Event $event): self
-    {
-        if ($this->event->removeElement($event)) {
-            // set the owning side to null (unless already changed)
-            if ($event->getUser() === $this) {
-                $event->setUser(null);
-            }
-        }
-
-        return $this;
-    }
-
-    /**
      * @return Collection|DonPhy[]
      */
     public function getDonphy(): Collection
@@ -235,9 +207,38 @@ class User implements UserInterface
         return $this;
     }
 
+<<<<<<< HEAD
     public function setUsername(string $username): self
     {
         $this->username = $username;
+=======
+    /**
+     * @return Collection|Event[]
+     */
+    public function getEvents(): Collection
+    {
+        return $this->events;
+    }
+
+    public function addEvent(Event $event): self
+    {
+        if (!$this->events->contains($event)) {
+            $this->events[] = $event;
+            $event->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeEvent(Event $event): self
+    {
+        if ($this->events->removeElement($event)) {
+            // set the owning side to null (unless already changed)
+            if ($event->getUser() === $this) {
+                $event->setUser(null);
+            }
+        }
+>>>>>>> 3b9bb84fce0fcd44064ef43f7bc48eafeb4946d5
 
         return $this;
     }
