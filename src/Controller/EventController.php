@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+
 use App\Entity\Event;
 use App\Entity\User;
 use Doctrine\ORM\EntityManagerInterface;
@@ -45,6 +46,7 @@ class EventController extends AbstractController
             $event->setDescription($request->get('Description'));
             $event->setDate($request->get('date'));
             $event->setUrlphoto($request->get('urlphoto'));
+            $event->setLocalisation($request->get('Localisation'));
             $user = $this->em->getRepository(User::class)->findOneBy(["id" => $request->request->get('user')]);
             $event->setUser($user);
             $this->em->persist($event);
@@ -136,7 +138,7 @@ class EventController extends AbstractController
      * @param Request $request
      * @return JsonResponse
      */
-    public function UpdateEvent(Request $request)
+    public function update_Event(Request $request)
     {
         $id = $request->get('id');
 

@@ -54,6 +54,11 @@ class DonPhy
      */
     private $user;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $UrlPhoto;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -139,6 +144,18 @@ class DonPhy
     public function setUser(?User $user): self
     {
         $this->user = $user;
+
+        return $this;
+    }
+
+    public function getUrlPhoto(): ?string
+    {
+        return $this->UrlPhoto;
+    }
+
+    public function setUrlPhoto(string $UrlPhoto): self
+    {
+        $this->UrlPhoto = $UrlPhoto;
 
         return $this;
     }

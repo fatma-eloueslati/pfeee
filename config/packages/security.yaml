@@ -3,7 +3,7 @@ security:
         App\Entity\Admin:
             algorithm: auto
         App\Entity\User:
-            algorithm: auto
+            algorithm: bcrypt
 
 
     # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
@@ -24,6 +24,8 @@ security:
             guard:
                 authenticators:
                     - App\Security\LoginAuthenticator
+
+                entry_point: App\Security\AppAuthenticator
             logout:
                 path: app_logout
                 # where to redirect after logout

@@ -52,6 +52,11 @@ class User implements UserInterface
      */
     private $cagnotte;
 
+    /**
+     * @ORM\Column(type="string", length=255, unique=true)
+     */
+    private $username;
+
     public function __construct()
     {
         $this->event = new ArrayCollection();
@@ -226,6 +231,13 @@ class User implements UserInterface
                 $cagnotte->setUser(null);
             }
         }
+
+        return $this;
+    }
+
+    public function setUsername(string $username): self
+    {
+        $this->username = $username;
 
         return $this;
     }
