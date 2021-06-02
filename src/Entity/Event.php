@@ -28,12 +28,6 @@ class Event
     private $Titre;
 
     /**
-     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="events")
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $user;
-
-    /**
      * @ORM\Column(type="text")
      */
     private $Description;
@@ -159,18 +153,6 @@ class Event
     public function setCategory(?Category $category): self
     {
         $this->category = $category;
-
-        return $this;
-    }
-
-    public function getUser(): ?User
-    {
-        return $this->user;
-    }
-
-    public function setUser(?User $user): self
-    {
-        $this->user = $user;
 
         return $this;
     }
