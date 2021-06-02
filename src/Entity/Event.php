@@ -28,12 +28,6 @@ class Event
     private $Titre;
 
     /**
-     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="events")
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $user;
-
-    /**
      * @ORM\Column(type="text")
      */
     private $Description;
@@ -60,10 +54,10 @@ class Event
     private $category;
 
     /**
-     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="event")
+     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="events")
      * @ORM\JoinColumn(nullable=false)
      */
-    private $user;
+    private $User;
 
     public function getId(): ?int
     {
@@ -93,17 +87,7 @@ class Event
 
         return $this;
     }
-    public function getUser(): ?user
-    {
-        return $this->user;
-    }
 
-    public function setUser(?user $user): self
-    {
-        $this->user = $user;
-
-        return $this;
-    }
 
     public function getDescription(): ?string
     {
@@ -165,12 +149,12 @@ class Event
 
     public function getUser(): ?User
     {
-        return $this->user;
+        return $this->User;
     }
 
-    public function setUser(?User $user): self
+    public function setUser(?User $User): self
     {
-        $this->user = $user;
+        $this->User = $User;
 
         return $this;
     }

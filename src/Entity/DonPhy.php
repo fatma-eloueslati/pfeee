@@ -26,6 +26,10 @@ class DonPhy
      * @ORM\Column(type="string", length=255)
      */
     private $Titre;
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $urlphoto;
 
     /**
      * @ORM\Column(type="text")
@@ -82,7 +86,16 @@ class DonPhy
 
         return $this;
     }
+    public function getUrlphoto(): ?string
+    {
+        return $this->urlphoto;
+    }
+    public function setUrlphoto(string $urlphoto): self
+    {
+        $this->urlphoto = $urlphoto;
 
+        return $this;
+    }
     public function getAdresse(): ?string
     {
         return $this->Adresse;
