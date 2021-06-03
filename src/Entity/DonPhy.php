@@ -160,16 +160,4 @@ class DonPhy
 
         return $this;
     }
-
-    public function getUrlPhoto(): ?string
-    {
-        return $this->UrlPhoto;
-    }
-
-    public function setUrlPhoto(string $UrlPhoto): self
-    {
-        $this->UrlPhoto = $UrlPhoto;
-
-        return $this;
-    }
 }
