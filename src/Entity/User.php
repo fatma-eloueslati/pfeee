@@ -48,16 +48,13 @@ class User implements UserInterface
     private $cagnotte;
 
     /**
-<<<<<<< HEAD
      * @ORM\Column(type="string", length=255, unique=true)
      */
     private $username;
-=======
-     * @ORM\OneToMany(targetEntity=Event::class, mappedBy="User")
+    /**
+     *  @ORM\OneToMany(targetEntity=Event::class, mappedBy="User")
      */
     private $events;
->>>>>>> 3b9bb84fce0fcd44064ef43f7bc48eafeb4946d5
-
     public function __construct()
     {
         $this->event = new ArrayCollection();
@@ -206,12 +203,10 @@ class User implements UserInterface
 
         return $this;
     }
-
-<<<<<<< HEAD
-    public function setUsername(string $username): self
+    public function setUsername(string $username)
     {
         $this->username = $username;
-=======
+    }
     /**
      * @return Collection|Event[]
      */
@@ -238,7 +233,6 @@ class User implements UserInterface
                 $event->setUser(null);
             }
         }
->>>>>>> 3b9bb84fce0fcd44064ef43f7bc48eafeb4946d5
 
         return $this;
     }
