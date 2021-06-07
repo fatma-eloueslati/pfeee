@@ -4,6 +4,7 @@ namespace App\Repository;
 
 use App\Entity\Event;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\Query\Expr\OrderBy;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -17,6 +18,19 @@ class EventRepository extends ServiceEntityRepository
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Event::class);
+    }
+    /**
+     * Retourner une liste d'events pour l'API
+     * @return array
+     */
+    public function apiFindAll(): array
+    {
+        $qb = $this -> createQueryBuilder('e')
+        ->select('e.id', 'e.titre', 'e.description', 'e.created_at', 'e.category', 'e.date');
+        ->OrderBy('e.created-at', 'DESC');   
+
+        $query = $qb->getQuery();
+        return $query->execute(); 
     }
 
     // /**
