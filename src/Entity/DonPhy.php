@@ -63,6 +63,11 @@ class DonPhy
      */
     private $UrlPhoto;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Asso::class, inversedBy="donphy")
+     */
+    private $asso;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -161,14 +166,14 @@ class DonPhy
         return $this;
     }
 
-    public function getUrlPhoto(): ?string
+    public function getAsso(): ?Asso
     {
-        return $this->UrlPhoto;
+        return $this->asso;
     }
 
-    public function setUrlPhoto(string $UrlPhoto): self
+    public function setAsso(?Asso $asso): self
     {
-        $this->UrlPhoto = $UrlPhoto;
+        $this->asso = $asso;
 
         return $this;
     }

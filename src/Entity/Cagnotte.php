@@ -63,6 +63,11 @@ class Cagnotte
      */
     private $user;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Asso::class, inversedBy="cagnotte")
+     */
+    private $asso;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -170,6 +175,18 @@ class Cagnotte
     public function setUser(?User $user): self
     {
         $this->user = $user;
+
+        return $this;
+    }
+
+    public function getAsso(): ?Asso
+    {
+        return $this->asso;
+    }
+
+    public function setAsso(?Asso $asso): self
+    {
+        $this->asso = $asso;
 
         return $this;
     }

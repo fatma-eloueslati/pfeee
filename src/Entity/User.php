@@ -6,11 +6,13 @@ use App\Repository\UserRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
  * @ORM\Table(name="`user`")
+ * @UniqueEntity(fields={"email"}, message="There is already an account with this email")
  */
 class User implements UserInterface
 {
@@ -48,15 +50,21 @@ class User implements UserInterface
     private $cagnotte;
 
     /**
-<<<<<<< HEAD
+
      * @ORM\Column(type="string", length=255, unique=true)
      */
     private $username;
-=======
+
+    /**
      * @ORM\OneToMany(targetEntity=Event::class, mappedBy="User")
      */
     private $events;
->>>>>>> 3b9bb84fce0fcd44064ef43f7bc48eafeb4946d5
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $isVerified = false;
+
 
     public function __construct()
     {
@@ -207,14 +215,15 @@ class User implements UserInterface
         return $this;
     }
 
-<<<<<<< HEAD
-    public function setUsername(string $username): self
+    public function setUsername(string $username)
     {
         $this->username = $username;
-=======
+    }
+
     /**
      * @return Collection|Event[]
      */
+
     public function getEvents(): Collection
     {
         return $this->events;
@@ -238,7 +247,18 @@ class User implements UserInterface
                 $event->setUser(null);
             }
         }
->>>>>>> 3b9bb84fce0fcd44064ef43f7bc48eafeb4946d5
+
+        return $this;
+    }
+
+    public function isVerified(): bool
+    {
+        return $this->isVerified;
+    }
+
+    public function setIsVerified(bool $isVerified): self
+    {
+        $this->isVerified = $isVerified;
 
         return $this;
     }
