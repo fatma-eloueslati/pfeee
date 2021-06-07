@@ -63,6 +63,11 @@ class DonPhy
      */
     private $UrlPhoto;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Asso::class, inversedBy="donphy")
+     */
+    private $asso;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -160,4 +165,19 @@ class DonPhy
 
         return $this;
     }
+<<<<<<< HEAD
+
+    public function getAsso(): ?Asso
+    {
+        return $this->asso;
+    }
+
+    public function setAsso(?Asso $asso): self
+    {
+        $this->asso = $asso;
+
+        return $this;
+    }
+=======
+>>>>>>> 5190c02a3191ae9d7b0e1353bb7b1b0981c284ec
 }

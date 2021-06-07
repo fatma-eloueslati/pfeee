@@ -6,11 +6,13 @@ use App\Repository\UserRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
  * @ORM\Table(name="`user`")
+ * @UniqueEntity(fields={"email"}, message="There is already an account with this email")
  */
 class User implements UserInterface
 {
@@ -48,6 +50,24 @@ class User implements UserInterface
     private $cagnotte;
 
     /**
+<<<<<<< HEAD
+
+     * @ORM\Column(type="string", length=255, unique=true)
+     */
+    private $username;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Event::class, mappedBy="User")
+     */
+    private $events;
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $isVerified = false;
+
+
+=======
      * @ORM\Column(type="string", length=255, unique=true)
      */
     private $username;
@@ -55,6 +75,7 @@ class User implements UserInterface
      *  @ORM\OneToMany(targetEntity=Event::class, mappedBy="User")
      */
     private $events;
+>>>>>>> 5190c02a3191ae9d7b0e1353bb7b1b0981c284ec
     public function __construct()
     {
         $this->event = new ArrayCollection();
@@ -203,13 +224,22 @@ class User implements UserInterface
 
         return $this;
     }
+<<<<<<< HEAD
+
+=======
+>>>>>>> 5190c02a3191ae9d7b0e1353bb7b1b0981c284ec
     public function setUsername(string $username)
     {
         $this->username = $username;
     }
+<<<<<<< HEAD
+
+=======
+>>>>>>> 5190c02a3191ae9d7b0e1353bb7b1b0981c284ec
     /**
      * @return Collection|Event[]
      */
+
     public function getEvents(): Collection
     {
         return $this->events;
@@ -233,6 +263,21 @@ class User implements UserInterface
                 $event->setUser(null);
             }
         }
+<<<<<<< HEAD
+
+        return $this;
+    }
+
+    public function isVerified(): bool
+    {
+        return $this->isVerified;
+    }
+
+    public function setIsVerified(bool $isVerified): self
+    {
+        $this->isVerified = $isVerified;
+=======
+>>>>>>> 5190c02a3191ae9d7b0e1353bb7b1b0981c284ec
 
         return $this;
     }
