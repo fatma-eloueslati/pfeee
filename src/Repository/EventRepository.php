@@ -25,12 +25,12 @@ class EventRepository extends ServiceEntityRepository
      */
     public function apiFindAll(): array
     {
-        $qb = $this -> createQueryBuilder('e')
-        ->select('e.id', 'e.titre', 'e.description', 'e.created_at', 'e.category', 'e.date');
-        ->OrderBy('e.created-at', 'DESC');   
+        $qb = $this->createQueryBuilder('e')
+            ->select('e.id', 'e.titre', 'e.description', 'e.created_at', 'e.category', 'e.date');
+        // -> OrderBy('e.created_at');  
 
         $query = $qb->getQuery();
-        return $query->execute(); 
+        return $query->execute();
     }
 
     // /**
