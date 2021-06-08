@@ -60,8 +60,6 @@ class User implements UserInterface
      * @ORM\Column(type="boolean")
      */
     private $isVerified = false;
-
-
     /**
      *  @ORM\OneToMany(targetEntity=Event::class, mappedBy="User")
      */
@@ -215,7 +213,6 @@ class User implements UserInterface
 
         return $this;
     }
-
     public function setUsername(string $username)
     {
         $this->username = $username;

@@ -1,7 +1,13 @@
 doctrine:
     dbal:
-        url: '%env(resolve:DATABASE_URL)%'
-
+      
+        
+        host: localhost
+        port: 3306
+        dbname: donenligne
+        user: root
+        password: 
+        charset: UTF8
         # IMPORTANT: You MUST configure your server version,
         # either here or in the DATABASE_URL env var (see .env file)
         #server_version: '13'
