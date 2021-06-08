@@ -20,8 +20,9 @@ security:
             security: false
         main:
             anonymous: lazy
+            
             provider: app_user_provider
-            guard:
+            guard:  
                 authenticators:
                     - App\Security\LoginAuthenticator
 
@@ -41,4 +42,4 @@ security:
     # Note: Only the *first* access control that matches will be used
     access_control:
         - { path: ^/logi, roles: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/, roles: IS_AUTHENTICATED_FULLY }
+        #- { path: ^/, roles: IS_AUTHENTICATED_FULLY }

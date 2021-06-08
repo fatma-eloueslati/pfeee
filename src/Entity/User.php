@@ -50,8 +50,6 @@ class User implements UserInterface
     private $cagnotte;
 
     /**
-<<<<<<< HEAD
-
      * @ORM\Column(type="string", length=255, unique=true)
      */
     private $username;
@@ -65,17 +63,6 @@ class User implements UserInterface
      * @ORM\Column(type="boolean")
      */
     private $isVerified = false;
-
-
-=======
-     * @ORM\Column(type="string", length=255, unique=true)
-     */
-    private $username;
-    /**
-     *  @ORM\OneToMany(targetEntity=Event::class, mappedBy="User")
-     */
-    private $events;
->>>>>>> 5190c02a3191ae9d7b0e1353bb7b1b0981c284ec
     public function __construct()
     {
         $this->event = new ArrayCollection();
@@ -224,18 +211,10 @@ class User implements UserInterface
 
         return $this;
     }
-<<<<<<< HEAD
-
-=======
->>>>>>> 5190c02a3191ae9d7b0e1353bb7b1b0981c284ec
     public function setUsername(string $username)
     {
         $this->username = $username;
     }
-<<<<<<< HEAD
-
-=======
->>>>>>> 5190c02a3191ae9d7b0e1353bb7b1b0981c284ec
     /**
      * @return Collection|Event[]
      */
@@ -263,7 +242,6 @@ class User implements UserInterface
                 $event->setUser(null);
             }
         }
-<<<<<<< HEAD
 
         return $this;
     }
@@ -276,8 +254,6 @@ class User implements UserInterface
     public function setIsVerified(bool $isVerified): self
     {
         $this->isVerified = $isVerified;
-=======
->>>>>>> 5190c02a3191ae9d7b0e1353bb7b1b0981c284ec
 
         return $this;
     }
