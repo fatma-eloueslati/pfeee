@@ -54,15 +54,17 @@ class User implements UserInterface
      */
     private $username;
 
-    /**
-     * @ORM\OneToMany(targetEntity=Event::class, mappedBy="User")
-     */
-    private $events;
+
 
     /**
      * @ORM\Column(type="boolean")
      */
     private $isVerified = false;
+    /**
+     *  @ORM\OneToMany(targetEntity=Event::class, mappedBy="User")
+     */
+    private $events;
+
     public function __construct()
     {
         $this->event = new ArrayCollection();
@@ -215,6 +217,7 @@ class User implements UserInterface
     {
         $this->username = $username;
     }
+
     /**
      * @return Collection|Event[]
      */

@@ -43,3 +43,6 @@ security:
     access_control:
         - { path: ^/logi, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         #- { path: ^/, roles: IS_AUTHENTICATED_FULLY }
+        - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+    #    - { path: ^/api/event/liste , roles: IS_AUTHENTICATED_FULLY }
+

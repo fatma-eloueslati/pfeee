@@ -9,6 +9,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
 use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
 use Symfony\Component\Serializer\Serializer;
+use App\Entity\Event;
 
 /**
  * @route("/api", name="api_")
@@ -21,7 +22,10 @@ class APIController extends AbstractController
     public function liste(EventRepository $eventRepo)
     {
         //récupérer la liste des events
+
         $events = $eventRepo->findAll();
+        // dump("peace");
+        // die;
 
         //spécifier qu'on utilise un encodeur en json
         $encoders = [new JsonEncoder()];

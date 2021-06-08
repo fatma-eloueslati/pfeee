@@ -27,7 +27,11 @@ class EventRepository extends ServiceEntityRepository
     {
         $qb = $this->createQueryBuilder('e')
             ->select('e.id', 'e.titre', 'e.description', 'e.created_at', 'e.category', 'e.date');
+<<<<<<< HEAD
 
+=======
+        // -> OrderBy('e.created_at');  
+>>>>>>> e0cec930517fd51f72f303d4f400eb345d917f22
 
         $query = $qb->getQuery();
         return $query->execute();
