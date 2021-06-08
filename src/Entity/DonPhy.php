@@ -46,22 +46,13 @@ class DonPhy
      */
     private $Num_tel;
 
-    /**
-     * @ORM\ManyToOne(targetEntity=Category::class, inversedBy="donphy")
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $category;
+
 
     /**
      * @ORM\ManyToOne(targetEntity=User::class, inversedBy="donphy")
      * @ORM\JoinColumn(nullable=false)
      */
     private $user;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $UrlPhoto;
 
     /**
      * @ORM\ManyToOne(targetEntity=Asso::class, inversedBy="donphy")
@@ -142,17 +133,6 @@ class DonPhy
         return $this;
     }
 
-    public function getCategory(): ?Category
-    {
-        return $this->category;
-    }
-
-    public function setCategory(?Category $category): self
-    {
-        $this->category = $category;
-
-        return $this;
-    }
 
     public function getUser(): ?User
     {

@@ -32,12 +32,12 @@ class Cagnotte
     private $urlphoto;
 
     /**
-     * @ORM\Column(type="text")
+     * @ORM\Column(type="string")
      */
     private $Description;
 
     /**
-     * @ORM\Column(type="text")
+     * @ORM\Column(type="string")
      */
     private $Beneficaire;
 

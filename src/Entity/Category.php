@@ -24,10 +24,6 @@ class Category
      */
     private $Event;
 
-    /**
-     * @ORM\OneToMany(targetEntity=DonPhy::class, mappedBy="category")
-     */
-    private $donphy;
 
     /**
      * @ORM\OneToMany(targetEntity=Cagnotte::class, mappedBy="category")
@@ -42,7 +38,6 @@ class Category
     public function __construct()
     {
         $this->Event = new ArrayCollection();
-        $this->donphy = new ArrayCollection();
         $this->cagnotte = new ArrayCollection();
     }
 
@@ -75,36 +70,6 @@ class Category
             // set the owning side to null (unless already changed)
             if ($event->getCategory() === $this) {
                 $event->setCategory(null);
-            }
-        }
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|DonPhy[]
-     */
-    public function getDonphy(): Collection
-    {
-        return $this->donphy;
-    }
-
-    public function addDonphy(DonPhy $donphy): self
-    {
-        if (!$this->donphy->contains($donphy)) {
-            $this->donphy[] = $donphy;
-            $donphy->setCategory($this);
-        }
-
-        return $this;
-    }
-
-    public function removeDonphy(DonPhy $donphy): self
-    {
-        if ($this->donphy->removeElement($donphy)) {
-            // set the owning side to null (unless already changed)
-            if ($donphy->getCategory() === $this) {
-                $donphy->setCategory(null);
             }
         }
 
