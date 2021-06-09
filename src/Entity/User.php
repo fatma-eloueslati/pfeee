@@ -43,6 +43,10 @@ class User implements UserInterface
      * @ORM\OneToMany(targetEntity=DonPhy::class, mappedBy="user")
      */
     private $donphy;
+    /**
+     * @ORM\OneToMany(targetEntity=Virement::class, mappedBy="user")
+     */
+    private $virement;
 
     /**
      * @ORM\OneToMany(targetEntity=Cagnotte::class, mappedBy="user")
@@ -183,7 +187,23 @@ class User implements UserInterface
 
         return $this;
     }
+    /**
+     * @return Collection|Virement[]
+     */
+    public function getVirement(): Collection
+    {
+        return $this->virement;
+    }
 
+    public function addVirement(Virement $virement): self
+    {
+        if (!$this->virement->contains($virement)) {
+            $this->virement[] = $virement;
+            $virement->setUser($this);
+        }
+
+        return $this;
+    }
     /**
      * @return Collection|Cagnotte[]
      */
