@@ -87,16 +87,7 @@ class DonPhy
 
         return $this;
     }
-    public function getUrlphoto(): ?string
-    {
-        return $this->urlphoto;
-    }
-    public function setUrlphoto(string $urlphoto): self
-    {
-        $this->urlphoto = $urlphoto;
 
-        return $this;
-    }
     public function getAdresse(): ?string
     {
         return $this->Adresse;
@@ -145,15 +136,13 @@ class DonPhy
 
         return $this;
     }
-
-    public function getAsso(): ?Asso
+    public function getUrlphoto(): ?string
     {
-        return $this->asso;
+        return $this->urlphoto;
     }
-
-    public function setAsso(?Asso $asso): self
+    public function setUrlphoto(string $urlphoto): self
     {
-        $this->asso = $asso;
+        $this->urlphoto = $urlphoto;
 
         return $this;
     }

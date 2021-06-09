@@ -20,6 +20,7 @@ class EventRepository extends ServiceEntityRepository
     }
 
 
+
     // /**
     //  * @return Event[] Returns an array of Event objects
     //  */
@@ -46,6 +47,9 @@ class EventRepository extends ServiceEntityRepository
             ->getQuery()
             ->getOneOrNullResult()
         ;
-    }
-    */
+
+    /**
+     * Retourner une liste d'events pour l'API
+     * @return array
+     */
 }
