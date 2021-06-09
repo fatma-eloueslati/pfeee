@@ -59,10 +59,6 @@ class Event
      */
     private $User;
 
-    /**
-     * @ORM\ManyToOne(targetEntity=Asso::class, inversedBy="event")
-     */
-    private $asso;
 
     public function getId(): ?int
     {
@@ -160,18 +156,6 @@ class Event
     public function setUser(?User $User): self
     {
         $this->User = $User;
-
-        return $this;
-    }
-
-    public function getAsso(): ?Asso
-    {
-        return $this->asso;
-    }
-
-    public function setAsso(?Asso $asso): self
-    {
-        $this->asso = $asso;
 
         return $this;
     }
