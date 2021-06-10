@@ -67,6 +67,16 @@ class Cagnotte
      */
     private $user;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Virement::class, mappedBy="cagnotte")
+     */
+    private $virements;
+
+    public function __construct()
+    {
+        $this->virements = new ArrayCollection();
+    }
+
 
     public function getId(): ?int
     {
@@ -176,6 +186,36 @@ class Cagnotte
     public function setUser(?User $user): self
     {
         $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Virement[]
+     */
+    public function getVirements(): Collection
+    {
+        return $this->virements;
+    }
+
+    public function addVirement(Virement $virement): self
+    {
+        if (!$this->virements->contains($virement)) {
+            $this->virements[] = $virement;
+            $virement->setCagnotte($this);
+        }
+
+        return $this;
+    }
+
+    public function removeVirement(Virement $virement): self
+    {
+        if ($this->virements->removeElement($virement)) {
+            // set the owning side to null (unless already changed)
+            if ($virement->getCagnotte() === $this) {
+                $virement->setCagnotte(null);
+            }
+        }
 
         return $this;
     }

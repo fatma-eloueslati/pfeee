@@ -29,11 +29,13 @@ class Virement
      * @ORM\JoinColumn(nullable=false)
      */
     private $user;
+
     /**
-     * @ORM\ManyToOne(targetEntity=Cagnotte::class, inversedBy="Virement")
+     * @ORM\ManyToOne(targetEntity=Cagnotte::class, inversedBy="virements")
      * @ORM\JoinColumn(nullable=false)
      */
     private $cagnotte;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -72,6 +74,7 @@ class Virement
 
         return $this;
     }
+
     public function getCagnotte(): ?Cagnotte
     {
         return $this->cagnotte;
