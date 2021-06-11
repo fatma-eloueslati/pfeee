@@ -5,5 +5,25 @@
 dashboard:
     path: /admin
     controller: App\Controller\Admin\DashboardController::index
+homepage: 
+     path: /
+     controller: App\Controller\HomeController::index
+add_event:
+    path: /event/add
+    controller: App\Controller\EventController::AddEvent
+all_event:
+    path: /event/all
+    controller: App\Controller\EventController::getAllEvents
+show_event:
+    path: /event/show/{id}
+    controller: App\Controller\EventController::showEvent
+update_event:
+    path: /event/update
+    controller: App\Controller\EventController::updateEvent
+delete_event:
+    path: /event/delete/{id}
+    controller: App\Controller\EventController::deleteEvent
+
+
 
 # ...

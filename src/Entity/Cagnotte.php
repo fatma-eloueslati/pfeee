@@ -75,6 +75,7 @@ class Cagnotte
     public function __construct()
     {
         $this->virements = new ArrayCollection();
+        $this->CreatedAt = new \DateTime('NOW');
     }
 
 

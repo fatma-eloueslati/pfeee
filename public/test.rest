@@ -1,1 +1,3 @@
 GET https://127.0.0.1:8000/api/event/liste
+GET https://127.0.0.1:8000/api/event/lire/{id}
+GET https://127.0.0.1:8000/api/event/ajout
