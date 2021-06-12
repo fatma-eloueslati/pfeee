@@ -35,7 +35,7 @@ class EventController extends AbstractController
     }
 
     /**
-     * @Route("/add", name="add_Event")
+     * @Route("/event/add", name="add_Event")
      * @param Request $request
      * @return JsonResponse
      */
@@ -64,7 +64,7 @@ class EventController extends AbstractController
 
     /**
      * @return Response
-     * @Route("/all", name="all_Event")
+     * @Route("/event/all", name="all_Event")
      */
     public function getAllEvents()
     {
@@ -98,7 +98,7 @@ class EventController extends AbstractController
     }
 
     /**
-     * @Route("/Show/{id}",name="show_Event")
+     * @Route("/event/show/{id}",name="show_Event")
      * @param Request $request
      * @param int $id
      * @return JsonResponse|Response
@@ -135,11 +135,11 @@ class EventController extends AbstractController
 
 
     /**
-     * @Route("/Update", name="update_Event")
+     * @Route("/event/update", name="update_Event")
      * @param Request $request
      * @return JsonResponse
      */
-    public function update_Event(Request $request)
+    public function updateEvent(Request $request)
     {
         $id = $request->get('id');
 
@@ -174,13 +174,13 @@ class EventController extends AbstractController
         }
     }
     /**
-     * @Route("/delete/{id}",name="delete_Event")
+     * @Route("/event/delete/{id}",name="delete_Event")
      * @param Request $request
      * @param int $id
      * @return JsonResponse
      */
 
-    public function delete(Request $request, int $id)
+    public function deleteEvent(Request $request, int $id)
     {
         $id = $request->get('id');
 

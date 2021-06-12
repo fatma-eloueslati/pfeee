@@ -14,6 +14,7 @@ use Symfony\Component\Serializer\Serializer;
 use App\Entity\Event;
 use App\Entity\DonPhy;
 use App\Entity\Cagnotte;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
@@ -166,8 +167,10 @@ class APIController extends AbstractController
         //récupérer la liste des events
 
         $cagnotte = $cagnotteRepo->findAll();
-        // dump("peace");
-        // die;
+
+        return  new JsonResponse($cagnotte);
+        dump($cagnotte);
+        die;
 
         //spécifier qu'on utilise un encodeur en json
         $encoders = [new JsonEncoder()];
@@ -185,6 +188,7 @@ class APIController extends AbstractController
                 return $object->getId();
             }
         ]);
+
         //on instancie la réponse 
         $response = new Response($jsonContent);
 
