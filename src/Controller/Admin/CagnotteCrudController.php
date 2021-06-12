@@ -33,6 +33,7 @@ class CagnotteCrudController extends AbstractCrudController
             TextField::new('Beneficaire'),
             MoneyField::new('Objectif'),
             DateField::new('Deadline'),
+            
 
 
         ];
